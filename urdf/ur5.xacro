@@ -1,19 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur_robot">
 
+<xacro:include filename="$(find ur_description)/urdf/inc/ur_macro.xacro"/>
+
+
 <xacro:arg name="gazebo" default="true"/>
 <xacro:arg name="prefix" default=""/>
 <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
 
-<!-- import main macro TODO -->
-<xacro:include filename="$(find ur_description)/urdf/inc/ur_macro.xacro"/>
-
-
-<!-- parameters -->
-<arg name="joint_limit_params" default="$(find ur_description)/config/ur5e/joint_limits.yaml"/>
-<arg name="kinematics_params" default="$(find ur_description)/config/ur5e/default_kinematics.yaml"/>
-<arg name="physical_params" default="$(find ur_description)/config/ur5e/physical_parameters.yaml"/>
-<arg name="visual_params" default="$(find ur_description)/config/ur5e/visual_parameters.yaml"/>
+<xacro:arg name="joint_limit_params" default="$(find ur_description)/config/ur5e/joint_limits.yaml"/>
+<xacro:arg name="kinematics_params" default="$(find ur_description)/config/ur5e/default_kinematics.yaml"/>
+<xacro:arg name="physical_params" default="$(find ur_description)/config/ur5e/physical_parameters.yaml"/>
+<xacro:arg name="visual_params" default="$(find ur_description)/config/ur5e/visual_parameters.yaml"/>
 <!-- legal values:
  - hardware_interface/PositionJointInterface
  - hardware_interface/VelocityJointInterface
