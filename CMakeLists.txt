@@ -11,6 +11,6 @@ if (CATKIN_ENABLE_TESTING)
 
 endif()
 
-install(DIRECTORY cfg config launch meshes urdf
+install(DIRECTORY cfg config sensors launch meshes urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 

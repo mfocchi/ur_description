@@ -3,7 +3,7 @@
 
 <xacro:include filename="$(find ur_description)/urdf/inc/ur_macro.xacro"/>
 
-
+<xacro:arg name="vision_sensor" default="true"/>
 <xacro:arg name="gazebo" default="true"/>
 <xacro:arg name="prefix" default=""/>
 <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
@@ -33,8 +33,30 @@ safety_pos_margin="$(arg safety_pos_margin)"
 safety_k_position="$(arg safety_k_position)"/>
      
 
-<xacro:if value="$(arg gazebo)">
 
+<xacro:if value="$(arg vision_sensor)">
+	<xacro:include filename="$(find ur_description)/sensors/d435_camera.urdf.xacro"/>
+
+	  <!-- realsense -->
+	  <!--These values are taken from  d435_camera.urdf.xacro and  d435_camera_openni.gazebo.urdf.xacro in sensors-description
+	 repo, commit 3fb6f787-->
+	  <xacro:property name="camera_fov" value="3.0"/>
+	  <xacro:property name="camera_width" value="640"/> 
+	  <xacro:property name="camera_height" value="480"/>
+	  <xacro:property name="camera_near" value="0.1"/>
+	  <xacro:property name="camera_far" value="100"/>    
+	  <xacro:property name="m_camera" value="0.07"/> <!--??-->
+
+	<xacro:d435_camera 
+		parent="wrist_3_link" 
+		name="ee_link"
+		camera_plugin="true">  
+		<origin xyz="0.05 0.0 -0.02" rpy="0 -1.57 0.0"/>
+	</xacro:d435_camera>
+
+</xacro:if>
+
+<xacro:if value="$(arg gazebo)">
   <!--
     Attach the Gazebo model to Gazebo's world frame.
 
@@ -115,5 +137,9 @@ safety_k_position="$(arg safety_k_position)"/>
 			<legacyModeNS>true</legacyModeNS>
       </plugin>
     </gazebo>
+
+
+
+
   </xacro:if>
 </robot>
