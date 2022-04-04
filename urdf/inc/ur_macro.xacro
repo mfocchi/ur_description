@@ -282,5 +282,28 @@
       <parent link="${prefix}flange"/>
       <child link="${prefix}tool0"/>
     </joint>
+
+  <!-- fixed frames for collisions (potential fields)-->
+  <link name="upper_arm_link_middle"/>
+  <joint name="upper_arm_link_middle_fixed_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-${upperarm_inertia_length/2} 0 0.13"/>    	
+    <parent link="upper_arm_link"/>
+    <child link="upper_arm_link_middle"/>
+  </joint>
+
+  <link name="forearm_link_middle"/>
+  <joint name="forearm_link_middle_fixed_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="${forearm_x/2} ${forearm_y/2} ${forearm_z/2}"/>
+    <parent link="forearm_link"/>
+    <child link="forearm_link_middle"/>
+  </joint>
+
+  <link name="forearm_link_end"/>
+  <joint name="forearm_link_end_fixed_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="${forearm_x} ${forearm_y} ${forearm_z}"/>
+    <parent link="forearm_link"/>
+    <child link="forearm_link_end"/>
+  </joint>
+
   </xacro:macro>
 </robot>
