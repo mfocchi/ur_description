@@ -5,6 +5,7 @@
 
 <xacro:arg name="vision_sensor" default="true"/>
 <xacro:arg name="gazebo" default="true"/>
+<xacro:arg name="gripper" default="false"/>
 <xacro:arg name="prefix" default=""/>
 <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
 
@@ -33,6 +34,14 @@ safety_pos_margin="$(arg safety_pos_margin)"
 safety_k_position="$(arg safety_k_position)"/>
      
 
+<xacro:if value="$(arg gripper)">
+    <xacro:include filename="$(find gripper_description)/urdf/gripper.xacro"/>
+    <joint name="gripper_robot_joint" type="fixed">
+        <parent link="tool0"/>
+        <child link="gripper_base"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+</xacro:if>
 
 <xacro:if value="$(arg vision_sensor)">
 	<xacro:include filename="$(find ur_description)/sensors/d435_camera.urdf.xacro"/>
