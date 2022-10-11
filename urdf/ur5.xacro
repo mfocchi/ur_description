@@ -35,7 +35,9 @@ safety_k_position="$(arg safety_k_position)"/>
      
 
 <xacro:if value="$(arg gripper)">
-    <xacro:include filename="$(find gripper_description)/urdf/gripper.xacro"/>
+    <xacro:include filename="$(find gripper_description)/urdf/gripper.xacro">
+ 		<xacro:arg name="transmission_hw_interface" value="$(arg transmission_hw_interface)"/>
+    </xacro:include>
     <joint name="gripper_robot_joint" type="fixed">
         <parent link="tool0"/>
         <child link="gripper_base"/>
