@@ -41,7 +41,7 @@ safety_k_position="$(arg safety_k_position)"/>
     <joint name="gripper_robot_joint" type="fixed">
         <parent link="tool0"/>
         <child link="gripper_base"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 3.14"/>
     </joint>
 </xacro:if>
 
