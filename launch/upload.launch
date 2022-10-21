@@ -14,7 +14,7 @@
   <arg name="gazebo" default="true" doc="starts model that works with gazebo" />
   <arg name="gripper" default="false" doc="starts model with gripper"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur5.xacro'
+  <param name="robot_description" command="$(find xacro)/xacro '$(find ur_description)/urdf/ur5.urdf.xacro'
     joint_limit_params:=$(arg joint_limit_params)
     kinematics_params:=$(arg kinematics_params)
     physical_params:=$(arg physical_params)
@@ -26,4 +26,6 @@
     gazebo:=$(arg gazebo)
     gripper:=$(arg gripper)"	
     />
+
+    <param name="robot_semantic_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5.srdf.xacro'" />
 </launch>
