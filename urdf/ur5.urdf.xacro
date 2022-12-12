@@ -81,11 +81,11 @@ safety_k_position="$(arg safety_k_position)"/>
 		    <arg name="camera_model"        value="zed2" />
 		    <arg name="base_frame"          value="world" />
 		    <arg name="publish_urdf"        value="true" />
-		    <arg name="cam_pos_x"           value="-0.5" />
+		    <arg name="cam_pos_x"           value="-1.0" />
 		    <arg name="cam_pos_y"           value="0.5" />
-		    <arg name="cam_pos_z"           value="1.5" />
+		    <arg name="cam_pos_z"           value="-0.3" />
 		    <arg name="cam_roll"            value="0." />
-		    <arg name="cam_pitch"           value="0." />
+		    <arg name="cam_pitch"           value="0.3" />
 		    <arg name="cam_yaw"             value="0." />
 		</include>
 
