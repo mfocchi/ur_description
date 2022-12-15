@@ -56,41 +56,20 @@ safety_k_position="$(arg safety_k_position)"/>
 <joint name="gripper_robot_joint" type="fixed">
         <parent link="tool0_without_gripper"/>
         <child link="gripper_base"/>
-        <origin xyz="0 0 0" rpy="0 0 3.14"/>
+        <origin xyz="0 0 0" rpy="0 0 1.57"/>
 </joint>
 
 <xacro:if value="$(arg vision_sensor)">
-	<xacro:if value="$(arg gazebo)">
-		<xacro:include filename="$(find ur_description)/sensors/zed2/zed2.xacro"/>
 
+	<xacro:if value="$(arg gazebo)">
+		<xacro:include filename="$(find ur_description)/sensors/zed2/simulation/zed2.xacro"/>
 		<xacro:zed2
 			parent="base_link"
 			name="zed_camera1">
-			<origin xyz="-1.0 0.5 -0.3" rpy="0. 0.3 0."/>
+			<origin xyz="-0.9 0.18 -0.35" rpy="0. 0.523 0."/>
 		</xacro:zed2>
 		<xacro:zed2_gazebo/>
   	</xacro:if>
-	
-	<xacro:unless value="$(arg gazebo)">
-
-		<include file="$(find zed_wrapper)/launch/include/zed_camera.launch.xml">
-		    <arg name="camera_name"         value="zed2" />
-		    <arg name="svo_file"            value="" />
-		    <arg name="stream"              value="" />
-		    <arg name="node_name"           value="zed_node" />
-		    <arg name="camera_model"        value="zed2" />
-		    <arg name="base_frame"          value="world" />
-		    <arg name="publish_urdf"        value="true" />
-		    <arg name="cam_pos_x"           value="-1.0" />
-		    <arg name="cam_pos_y"           value="0.5" />
-		    <arg name="cam_pos_z"           value="-0.3" />
-		    <arg name="cam_roll"            value="0." />
-		    <arg name="cam_pitch"           value="0.3" />
-		    <arg name="cam_yaw"             value="0." />
-		</include>
-
-  	</xacro:unless>
-
 		
 <!--	<xacro:include filename="$(find ur_description)/sensors/d435_camera.urdf.xacro"/>-->
 
