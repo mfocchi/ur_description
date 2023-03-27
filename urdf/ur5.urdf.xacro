@@ -3,6 +3,7 @@
 
 <xacro:include filename="$(find ur_description)/urdf/inc/ur_macro.xacro"/>
 
+<xacro:arg name="robot_name_space" default="ur5"/>
 <xacro:arg name="vision_sensor" default="true"/>
 <xacro:arg name="gazebo" default="true"/>
 <xacro:arg name="gripper" default="false"/>
@@ -184,8 +185,9 @@ safety_k_position="$(arg safety_k_position)"/>
     <gazebo>
       <plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
 			
-			<robotNamespace>/ur5</robotNamespace> <!--TODO1 change this with prefix when you use 2 robots     -->
+			<robotNamespace>$(arg robot_name_space)</robotNamespace> <!--TODO1 change this with prefix when you use 2 robots     -->
 			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			<robotParam>$(arg robot_name_space)/robot_description</robotParam>
 			<legacyModeNS>true</legacyModeNS>
       </plugin>
     </gazebo>
