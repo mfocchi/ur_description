@@ -11,7 +11,7 @@
   <arg name="safety_pos_margin" default="0.15" doc="The lower/upper limits in the safety controller" />
   <arg name="safety_k_position" default="20" doc="Used to set k position in the safety controller" />
 
-  <arg name="gazebo" default="true" doc="starts model that works with gazebo" />
+  <arg name="gazebo" default="false" doc="starts model that works with gazebo" />
   <arg name="gripper" default="false" doc="starts model with gripper activated"/>
   <arg name="soft_gripper" default="true" doc="starts model with soft gripper"/>
   <arg name="robot_name_space" default="ur5"/>

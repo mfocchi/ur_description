@@ -5,6 +5,7 @@
 
   <include file="$(find ur_description)/launch/upload.launch">
 	  <arg name="gripper" value="$(arg gripper)" />
+	  <arg name="gazebo" value="true" />
   </include>
   <arg name="robot_name_space" default="ur5"/>
 
