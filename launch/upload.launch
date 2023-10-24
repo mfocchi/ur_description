@@ -12,8 +12,11 @@
   <arg name="safety_k_position" default="20" doc="Used to set k position in the safety controller" />
 
   <arg name="gazebo" default="false" doc="starts model that works with gazebo" />
+
   <arg name="gripper" default="false" doc="starts model with gripper activated"/>
   <arg name="soft_gripper" default="true" doc="starts model with soft gripper"/>
+  <arg name="robotiq_gripper" default="false" doc="starts model with robotiq gripper"/>
+  
   <arg name="robot_name_space" default="ur5"/>
 
 
@@ -28,7 +31,8 @@
     safety_k_position:=$(arg safety_k_position)
     gazebo:=$(arg gazebo)
     gripper:=$(arg gripper)
-    soft_gripper:=$(arg soft_gripper)"	
+    soft_gripper:=$(arg soft_gripper)
+    robotiq_gripper:=$(arg robotiq_gripper)"	
     />
 
     <param name="robot_semantic_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5.srdf.xacro'" />
