@@ -51,14 +51,14 @@ safety_k_position="$(arg safety_k_position)"/>
 		<xacro:include filename="$(find gripper_description)/urdf/robotiq_gripper.macro.xacro" />
 		<xacro:robotiq_gripper 
 			transmission_hw_interface="$(arg transmission_hw_interface)"			
-			grasp_plugin="$(arg gripper)"			
+			grasp_plugin="false"			
 			gripper_active="$(arg gripper)"/>
 	</xacro:if>
 	<xacro:unless value="$(arg robotiq_gripper)">		
 		<xacro:include filename="$(find gripper_description)/urdf/gripper.macro.xacro" />
  		<xacro:gripper 
 			transmission_hw_interface="$(arg transmission_hw_interface)"			
-			grasp_plugin="false"			
+			grasp_plugin="$(arg gripper)"			
 			gripper_active="$(arg gripper)"/><!--grasp plugin does not work with mimic joints-->		
 	</xacro:unless>
 </xacro:unless>

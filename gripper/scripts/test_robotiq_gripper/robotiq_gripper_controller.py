@@ -46,7 +46,7 @@ def callback(data):
     lines = file.readlines()
     file.close()
     offset = 0
-    buffer = 80000
+    buffer = 2500
 
     if (data.data == 'set'):
         diameter = 120
