@@ -14,16 +14,17 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 #f = open ("Grip.script", "rb")   #Robotiq Gripper
 #f = open ("setzero.script", "rb")  #Robotiq FT sensor
-path = scripts_path = rospkg.RosPack().get_path('ur_description') + '/gripper/scripts/test_gripper/'
+path = scripts_path = rospkg.RosPack().get_path('ur_description') + '/gripper/scripts/test_soft_gripper/'
 
 def callback(data):
     
     script=''
     if(data.data == 'open1'):
         script = path + 'open1.script'
-        print("open")
+        print("open1")
     elif(data.data == 'open2'):
         script = path + 'open2.script'
+        print("open2")
     elif(data.data == 'close'):
         script = path + 'close.script'
         print("close")
@@ -53,6 +54,9 @@ def listener():
 
     rospy.Subscriber("/gripper_controller_cmd", String, callback,queue_size=10)
     rospy.spin()
+    ##### TOUSE rostopic pub /gripper_controller_cmd std_msgs/String "data: '"open/close"'"
+
+
     # spin() simply keeps python from exiting until this node is stopped
 if __name__ == '__main__':
     listener()
